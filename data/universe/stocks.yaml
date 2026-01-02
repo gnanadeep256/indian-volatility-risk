@@ -1,0 +1,46 @@
+index:
+  - ticker: "^NSEI"
+    name: "NIFTY 50"
+    sector: "Index"
+
+stocks:
+  - ticker: "RELIANCE.NS"
+    name: "Reliance Industries"
+    sector: "Energy"
+
+  - ticker: "HDFCBANK.NS"
+    name: "HDFC Bank"
+    sector: "Financials"
+
+  - ticker: "ICICIBANK.NS"
+    name: "ICICI Bank"
+    sector: "Financials"
+
+  - ticker: "SBIN.NS"
+    name: "State Bank of India"
+    sector: "Financials"
+
+  - ticker: "INFY.NS"
+    name: "Infosys"
+    sector: "IT"
+
+  - ticker: "TCS.NS"
+    name: "Tata Consultancy Services"
+    sector: "IT"
+
+  - ticker: "WIPRO.NS"
+    name: "Wipro"
+    sector: "IT"
+
+  - ticker: "ITC.NS"
+    name: "ITC"
+    sector: "Consumer"
+
+  - ticker: "HINDUNILVR.NS"
+    name: "Hindustan Unilever"
+    sector: "Consumer"
+
+  - ticker: "AXISBANK.NS"
+    name: "Axis Bank"
+    sector: "Financials"
+
