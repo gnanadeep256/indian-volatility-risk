@@ -96,13 +96,13 @@ mode = st.sidebar.radio("Mode", ["Single Model", "Compare Models"])
 MODEL_NAMES = [
     "GARCH (Econometric)",
     "ML (Recent Volatility)",
-    "LSTM (DL Proxy)",
+    "LSTM (DL Model)",
 ]
 
 MODEL_COLORS = {
     "GARCH (Econometric)": "#1f77b4",
     "ML (Recent Volatility)": "#ff7f0e",
-    "LSTM (DL Proxy)": "#2ca02c",
+    "LSTM (DL Model)": "#2ca02c",
 }
 
 if mode == "Single Model":
@@ -129,11 +129,11 @@ with st.sidebar.expander("GARCH (Econometric)"):
 
 with st.sidebar.expander("ML (Recent Volatility)"):
     st.write(
-        "Uses recent realized volatility. "
+        "Uses recent realized volatility."
         "Highly reactive, but sensitive to short-term noise."
     )
 
-with st.sidebar.expander("LSTM (Deep Learning)"):
+with st.sidebar.expander("LSTM (DL Model)"):
     st.write(
         "Learns non-linear temporal dependencies. "
         "Better at capturing prolonged stress and tail risk."
@@ -213,6 +213,65 @@ if run:
     ax.set_ylabel("Density")
     ax.legend()
     st.pyplot(fig)
+
+    st.markdown("""
+## How to Read the Return Distribution & Tail Risk Chart
+
+This chart shows the **distribution of simulated returns** over the selected forecast horizon
+(e.g., 30 days), generated using different volatility models.
+
+### Axes
+- **X-axis (Return):** Possible percentage returns over the forecast horizon  
+- **Y-axis (Density):** Likelihood of observing those returns  
+
+Higher density means the model believes those returns are more likely.
+
+---
+
+### Colored Distributions
+Each colored histogram corresponds to a different volatility model:
+
+- **GARCH (Econometric)**  
+  Produces a wider distribution, reflecting volatility persistence and long-term risk.
+
+- **ML (Recent Volatility)**  
+  Reacts strongly to recent market movements, often producing tighter but more reactive distributions.
+
+- **LSTM (Deep Learning Proxy)**  
+  Captures non-linear and regime-dependent behavior, sometimes exhibiting asymmetric or heavier tails.
+
+Differences in width and shape represent **different assumptions about market uncertainty**.
+
+---
+
+### Dashed Vertical Lines (Value at Risk – VaR)
+The dashed vertical lines indicate the **Value at Risk (VaR)** for each model.
+
+VaR answers the question:
+
+> *“What is the maximum expected loss over the forecast horizon at a given confidence level?”*
+
+- A **further-left VaR line** indicates **higher downside risk**
+- Models with heavier left tails imply **greater exposure to extreme losses**
+
+---
+
+### Interpreting Risk Visually
+- **Wider distributions ⇒ higher uncertainty**
+- **Heavier left tails ⇒ higher crash risk**
+- **VaR closer to zero ⇒ more conservative risk estimate**
+
+Different models produce different VaR values because they encode
+**different beliefs about how volatility behaves**.
+
+---
+
+### Important Note
+These distributions are **not forecasts** of exact future returns.
+
+They represent **plausible outcomes** assuming current volatility dynamics persist.
+Monte Carlo simulation is a **risk exploration tool**, not a price prediction engine.
+""")
 
     # ==================================================
     # Monte Carlo Fan Charts
