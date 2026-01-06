@@ -3,6 +3,10 @@ index:
     name: "NIFTY 50"
     sector: "Index"
 
+  - ticker: "^NSEBANK"
+    name: "NIFTY Bank"
+    sector: "Index"
+
 stocks:
   - ticker: "RELIANCE.NS"
     name: "Reliance Industries"
@@ -18,6 +22,10 @@ stocks:
 
   - ticker: "SBIN.NS"
     name: "State Bank of India"
+    sector: "Financials"
+
+  - ticker: "AXISBANK.NS"
+    name: "Axis Bank"
     sector: "Financials"
 
   - ticker: "INFY.NS"
@@ -40,7 +48,26 @@ stocks:
     name: "Hindustan Unilever"
     sector: "Consumer"
 
-  - ticker: "AXISBANK.NS"
-    name: "Axis Bank"
-    sector: "Financials"
+  - ticker: "MARUTI.NS"
+    name: "Maruti Suzuki"
+    sector: "Automobile"
 
+  - ticker: "TATAMOTORS.NS"
+    name: "Tata Motors"
+    sector: "Automobile"
+
+  - ticker: "TATASTEEL.NS"
+    name: "Tata Steel"
+    sector: "Metals"
+
+  - ticker: "HINDALCO.NS"
+    name: "Hindalco Industries"
+    sector: "Metals"
+
+  - ticker: "ONGC.NS"
+    name: "ONGC"
+    sector: "Energy"
+
+  - ticker: "POWERGRID.NS"
+    name: "Power Grid Corporation"
+    sector: "Utilities"

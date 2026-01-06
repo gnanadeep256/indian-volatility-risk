@@ -53,10 +53,25 @@ def fetch_latest_data(yf_ticker: str):
         start="2014-01-01",
         progress=False,
         auto_adjust=False,
-    ).reset_index()
+    )
 
-    if df.empty:
-        return df
+    # Hard stop if Yahoo fails
+    if df is None or df.empty:
+        return pd.DataFrame()
+
+    # Handle Yahoo MultiIndex columns safely
+    if isinstance(df.columns, pd.MultiIndex):
+        df.columns = df.columns.get_level_values(0)
+
+    df = df.reset_index()
+    df.columns = [c.lower().replace(" ", "_") for c in df.columns]
+
+    # Explicit check (no assumptions)
+    if "close" not in df.columns:
+        return pd.DataFrame()
+
+    df["close"] = df["close"]
+    return df
 
     if isinstance(df.columns, pd.MultiIndex):
         df.columns = ["_".join([str(x) for x in col if x]) for col in df.columns]
